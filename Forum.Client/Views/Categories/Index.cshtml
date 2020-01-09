@@ -1,0 +1,46 @@
+﻿@model IEnumerable<IGrouping<Section, Category>>
+
+@{
+    ViewData["Title"] = "Página Inicial";
+}
+<div class="container">
+    <div class="nav nav-tabs">
+        <a asp-action="Create" asp-controller="Sections" class="nav-link">Nova Seção</a>
+        <a asp-action="Create" asp-controller="Categories" class="nav-link">Nova categoria</a>
+    </div>
+
+
+    @foreach (var categoriesBySection in Model)
+    {
+<div class="list-group-flush">
+    <h2 id="Sections">@categoriesBySection.Key.Name</h2>
+
+    @foreach (var category in categoriesBySection)
+    {
+        <article class="card">
+            <h5 class="card-header"><a asp-action="Details" asp-controller="Categories" asp-route-id="@category.Id">@category.Name</a></h5>
+            <p class="card-body">@category.Description</p>
+        </article>
+
+    }
+    <hr />
+</div>
+    }
+
+</div>
+
+<style>
+    .nav {
+        margin-bottom: 10px;
+    }
+    .card {
+        margin-top: 10px !important;
+    }
+    .row {
+        padding-left: 15px;
+    }
+    h2#Sections:before {
+        content: "» ";
+    }
+</style>
+

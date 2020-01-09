@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Forum.Domain.Entities.Section>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <a asp-action="Index" asp-controller="Categories">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </a>
+
+                <ul>
+                    @foreach (var category in item.Categories)
+                    {
+                        <li>@category.Name</li>
+                    }
+                </ul>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

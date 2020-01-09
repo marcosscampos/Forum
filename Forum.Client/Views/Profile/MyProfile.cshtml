@@ -1,0 +1,38 @@
+﻿@model User
+
+@{
+    ViewData["Title"] = "MyProfile";
+}
+    <div class="container">
+        <h1>Perfil de @Model.UserName</h1>
+        <section class="list-group">
+            <p>
+                <img src="/images/geral.png" alt="" class="img-thumbnail rounded-circle border border-info"/><br/>
+                <a asp-action="Edit" asp-controller="Profile" class="texto">Atualizar</a>
+            </p>
+            <p class="list-group-item">
+                <strong>Username:</strong> @Model.UserName
+                <br />
+                <strong>Email:</strong> @Model.Email
+            </p>
+        </section>
+    </div>
+<style>
+    .list-group-item {
+        border-radius: 10px;
+        width: 500px;
+        margin-top: 10px;
+    }
+    img {
+        margin: 10px;
+        height: 100px;
+        width: 100px;
+    }
+    .texto {
+        padding-left: 25px;
+    }
+</style>
+
+
+
+

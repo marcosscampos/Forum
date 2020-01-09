@@ -1,0 +1,43 @@
+﻿@model Forum.Client.Models.EditUserViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<div class="container">
+    <h1>Atualizar Foto de Perfil</h1>
+    <hr/>
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit" enctype="multipart/form-data" asp-controller="Profile" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input asp-for="Avatar" type="file" class="form-control custom-file-input"/>
+                <label class="custom-file-label">Selecionar imagem</label>
+                <input type="submit" value="Salvar" class="btn btn-light"/>
+            </form>
+        </div>
+    </div>
+    <div>
+        <a asp-action="MyProfile">Voltar ao perfil</a>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function() {
+            $('.custom-file-input').on("change",
+                function() {
+                    var fileName = $(this).val().split('\\').pop();
+                    $(this).next('.custom-file-label').html(fileName);
+                });
+        })
+    </script>
+}
+<style>
+    .btn {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .custom-file-label {
+        padding-left: 15px !important;
+    }
+</style>

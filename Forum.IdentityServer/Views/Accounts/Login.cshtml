@@ -1,0 +1,25 @@
+﻿@model LoginViewModel
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Login">
+            <input type="hidden" asp-for="ReturnUrl"/>
+
+            <div asp-validation-summary="ModelOnly"></div>
+
+            <label asp-for="Email"></label>
+            <input asp-for="Email" />
+            <span asp-validation-for="Email"></span>
+
+            <label asp-for="Password"></label>
+            <input asp-for="Password" />
+            <span asp-validation-for="Password"></span>
+
+            <button type="submit">Entrar</button>
+        </form>
+    </div>
+
+    <div>
+        <a asp-controller="Account" asp-action="Register" asp-route-returnUrl="@Model.ReturnUrl">Inscreva-se</a>
+    </div>
+</div>
